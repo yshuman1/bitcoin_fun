@@ -1,0 +1,24 @@
+<html>
+<% include header %>
+  Create Brain Wallet
+  <h1>BTC USD Converter</h1>
+  <input type="text" id="btc" value="1" onkeyup="return btcusd()" onchange="return btcusd()"> =
+  <input type="text" id="usd" value="<%= lastPrice %>" onkeyup="return usdbtc()" onchange="return usdbtc()">
+  <script>
+    function btcusd() {
+      let market_price = <%= lastPrice %>;
+      let btc_value = document.getElementById("btc").value;
+      let calc = btc_value * market_price;
+      document.getElementById("usd").value = calc.toFixed(2);
+    };
+    function usdbtc() {
+      let market_price = <%= lastPrice %>;
+      let btc_value = document.getElementById("usd").value;
+      let calc = usd_value / market_price;
+      document.getElementById("btc").value = calc.toFixed(8);
+    };
+  </script>
+
+
+
+</html>
